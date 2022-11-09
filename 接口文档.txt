@@ -1,0 +1,63 @@
+
+1.首页轮播图推荐
+	/data/rcrec
+	sql: SELECT car.id,car.`name` FROM `rcrec` LEFT JOIN car ON rcrec.id=car.id
+2.精品推荐
+	/data/btrec
+	sql: SELECT * FROM car ORDER BY RAND() LIMIT 12
+3.已完结漫画
+	/data/alrend?limit=[number=12]&offset=[number=0]
+	sql: SELECT * FROM `car` WHERE isEnd=0 LIMIT 12 OFFSET 0
+4.热度最高
+	/data/hot?limit=[number=12]&offset=[number=0]
+	sql: SELECT * FROM `car` ORDER BY browse DESC limit 12 OFFSET 0
+5.点赞最多
+	/data/fabul?limit=[number=12]&offset=[number=0]
+	sql: SELECT * FROM `car` ORDER BY highly DESC limit 12 OFFSET 0
+6.收藏最多
+	/data/collection?limit=[number=12]&offset=[number=0]
+	sql: SELECT * FROM `car` ORDER BY collection DESC limit 12 OFFSET 0
+7.单本漫画详情
+	/data/cartoon?id=[number]
+	sql: SELECT * FROM `car` WHERE id=2001
+8.获取漫画章节图片(i为章节,i=0表示第一章节)
+	/data/carlist?id=[number]&i=[number=0]
+9.随机推荐本本
+	/data/rand
+	sql: SELECT * FROM car ORDER BY RAND() LIMIT 1
+10.搜索
+	/data/search?name=[string='萝莉']&limit=[number=24]
+	sql: SELECT * FROM car WHERE `name` LIKE '%萝%莉%'
+11.最近更新
+	/data/lately?limit=[number=12]&offset=[number=0]
+	sql: SELECT * FROM `car` ORDER BY collection DESC limit 12 OFFSET 0
+
+12.添加收藏	V
+	/data/addColl?id=[漫画id]
+13.点赞	V
+	/data/focus
+14.留言
+	(暂定)
+15.登录	V
+	/data/signin?id=id&pwd=pwd
+16.注册	V
+	/data/createUser?id=[账号]&pwd=[密码]&name=[昵称]
+17.修改账户信息
+	(暂定)
+18.退出登录	V
+	/data/outSignin
+19.浏览记录	V
+	/data/mybrow
+20.我的收藏	V
+	/data/myColl
+21.删除记录
+	(暂定)
+22.取消收藏	V
+	/data/removeColl?id=[漫画id]
+23.检测是否登录(获取登录用户信息)	V
+	/data/isSignin
+
+后续新增:
+	头像上传
+		/data/uploadpicture
+	漫画下载
